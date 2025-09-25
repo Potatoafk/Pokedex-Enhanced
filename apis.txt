@@ -1,0 +1,4 @@
+https://pokeapi.co/api/v2/pokemon?limit=${number}
+
+
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon}.gif  -> 931
