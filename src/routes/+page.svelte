@@ -4,6 +4,7 @@
     import { onMount } from "svelte";
 
     let pokemonData;
+    let pokemonGifs;
     let errorMessage = "";
 
     onMount(async () => {
@@ -31,102 +32,40 @@
                 />
             </div>
             <div class="row g-2">
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
+                {#each pokemonData as pokemon}
+                    {@const id = Number(
+                        pokemon.url.split("/").filter(Boolean).pop(),
+                    )}
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="card p-1">
+                            <small>
+                                {id}
+                            </small>
+                            <div
+                                class="sprite container d-flex align-items-center justify-content-center mt-5"
+                            >
+                                <img
+                                    src={getPokemonGifs(id)}
+                                    class="sprites img-fluid rounded-top"
+                                    alt={pokemon.name}
+                                />
+                            </div>
+
+                            <div class="card-body">
+                                <h5
+                                    class="card-title text-capitalize text-center"
+                                >
+                                    {pokemon.name}
+                                </h5>
+                                <h6
+                                    class="card-text text-capitalize text-center"
+                                >
+                                    Text
+                                </h6>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Title</h3>
-                            <p class="card-text">Text</p>
-                        </div>
-                    </div>
-                </div>
+                {/each}
             </div>
         </div>
         <div class="footer">
