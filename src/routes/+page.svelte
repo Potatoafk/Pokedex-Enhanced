@@ -4,11 +4,15 @@
     import { onMount } from "svelte";
 
     let pokemonData;
-    let pokemonGifs;
+    let pokemonUri;
     let errorMessage = "";
 
     onMount(async () => {
         pokemonData = await getPokemonData();
+        for (const pokemon of pokemonData) {
+            pokemonUri = await fetch(pokemon.uri);
+        }
+        pokemonUri = await fetch(pokemonData.url);
         if (!pokemonData) {
             errorMessage = "Could not fetch Pokémon data.";
         }
@@ -24,7 +28,7 @@
             <div class="mb-3">
                 <input
                     type="text"
-                    class="form-control"
+                    class="form-control p-3"
                     name=""
                     id=""
                     aria-describedby="helpId"
@@ -38,7 +42,7 @@
                     )}
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="card p-1">
-                            <small>
+                            <small class="ms-3 mt-2">
                                 {id}
                             </small>
                             <div
@@ -57,11 +61,7 @@
                                 >
                                     {pokemon.name}
                                 </h5>
-                                <h6
-                                    class="card-text text-capitalize text-center"
-                                >
-                                    Text
-                                </h6>
+                                <p>{pokemon.weight}</p>
                             </div>
                         </div>
                     </div>
