@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
 
     let pokemonData;
-    let pokemonGifs;
+    let pokemonUri;
     let errorMessage = "";
 
     onMount(async () => {
@@ -43,7 +43,7 @@
                     )}
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="card p-1">
-                            <small>
+                            <small class="ms-3 mt-2">
                                 {id}
                             </small>
                             <div
@@ -62,15 +62,11 @@
                                 >
                                     {pokemon.name}
                                 </h5>
-                                <h6
-                                    class="card-text text-capitalize text-center"
-                                >
-                                    Text
-                                </h6>
+                                <p>{pokemon.weight}</p>
                             </div>
                         </div>
                     </div>
-                </div>
+                {/each}
             </div>
         </div>
         <div class="footer">
