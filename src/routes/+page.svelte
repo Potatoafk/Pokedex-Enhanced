@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
 
     let pokemonData;
-    let pokemonUri;
+    let pokemonGifs;
     let errorMessage = "";
 
     onMount(async () => {
@@ -12,7 +12,7 @@
         for (const pokemon of pokemonData) {
             pokemonUri = await fetch(pokemon.uri);
         }
-        
+
         pokemonUri = await fetch(pokemonData.url);
         if (!pokemonData) {
             errorMessage = "Could not fetch Pokémon data.";
@@ -43,7 +43,7 @@
                     )}
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="card p-1">
-                            <small class="ms-3 mt-2">
+                            <small>
                                 {id}
                             </small>
                             <div
@@ -62,11 +62,15 @@
                                 >
                                     {pokemon.name}
                                 </h5>
-                                <!-- <p>{pokemon.weight}</p> -->
+                                <h6
+                                    class="card-text text-capitalize text-center"
+                                >
+                                    Text
+                                </h6>
                             </div>
                         </div>
                     </div>
-                {/each}
+                </div>
             </div>
         </div>
         <div class="footer">
