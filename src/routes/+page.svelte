@@ -4,17 +4,17 @@
     import { onMount } from "svelte";
 
     let pokemonData;
-    let pokemonGifs;
     let errorMessage = "";
 
     onMount(async () => {
         pokemonData = await getPokemonData();
-        for (const pokemon of pokemonData) {
-            pokemonUri = await fetch(pokemon.uri);
-        }
-        pokemonUri = await fetch(pokemonData.url);
         if (!pokemonData) {
             errorMessage = "Could not fetch Pokémon data.";
+        } else {
+            for (const element of pokemonData) {
+                let pokemonUrl = element.url;
+                console.log(pokemonUrl);
+            }
         }
     });
 </script>
@@ -35,7 +35,7 @@
                     placeholder="Search for pokemon"
                 />
             </div>
-            <div class="row g-2">
+            <div class="row g-3">
                 {#each pokemonData as pokemon}
                     {@const id = Number(
                         pokemon.url.split("/").filter(Boolean).pop(),
