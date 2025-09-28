@@ -7,7 +7,7 @@ export const getPokemonData = async () => {
         }
         const data = await response.json();
         // Return only the array of pokemon
-        // console.log(data.results)
+        console.log(data.results)
         return data.results;
 
     } catch (error) {
