@@ -12,6 +12,7 @@
         for (const pokemon of pokemonData) {
             pokemonUri = await fetch(pokemon.uri);
         }
+        
         pokemonUri = await fetch(pokemonData.url);
         if (!pokemonData) {
             errorMessage = "Could not fetch Pokémon data.";
@@ -61,7 +62,7 @@
                                 >
                                     {pokemon.name}
                                 </h5>
-                                <p>{pokemon.weight}</p>
+                                <!-- <p>{pokemon.weight}</p> -->
                             </div>
                         </div>
                     </div>
