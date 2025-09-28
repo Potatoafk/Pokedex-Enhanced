@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
 
     let pokemonData;
-    let pokemonGifs;
+    let pokemonUrl;
     let errorMessage = "";
 
     onMount(async () => {
